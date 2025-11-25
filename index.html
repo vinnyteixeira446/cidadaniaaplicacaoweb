@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Combate à Fome - Cidadania Ativa</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-green-600 text-white p-4 text-center" role="banner">
+        <h1 class="text-2xl font-bold">Dashboard de Combate à Fome</h1>
+        <p class="text-sm">Engaje-se na cidadania: Visualize, doe e ajude a combater a fome!</p>
+    </header>
+
+    <nav class="bg-white shadow-md" role="navigation">
+        <div class="container mx-auto px-4">
+            <ul class="flex space-x-4 py-2">
+                <li><button class="tab-btn active px-4 py-2 bg-green-500 text-white rounded" data-tab="overview" aria-label="Visão Geral">Visão Geral</button></li>
+                <li><button class="tab-btn px-4 py-2 bg-gray-200 rounded" data-tab="data" aria-label="Dados">Dados</button></li>
+                <li><button class="tab-btn px-4 py-2 bg-gray-200 rounded" data-tab="engage" aria-label="Engajamento">Engajamento</button></li>
+                <li><button class="tab-btn px-4 py-2 bg-gray-200 rounded" data-tab="edu" aria-label="Educação">Educação</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-6" role="main">
+        <!-- Visão Geral -->
+        <div id="overview" class="tab-content active animate-fade">
+            <h2 class="text-xl font-semibold mb-4">Visão Geral da Fome no Brasil</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="font-bold">População Afetada</h3>
+                    <p class="text-2xl text-red-500" id="afetados">15%</p>
+                    <p>Da população em insegurança alimentar (dados simulados).</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="font-bold">Doações Este Mês</h3>
+                    <p class="text-2xl text-green-500" id="doacoes">2.500</p>
+                    <p>Alimentos doados via plataforma.</p>
+                </div>
+                <div class="bg-white p-4 rounded shadow">
+                    <h3 class="font-bold">Pontos de Distribuição</h3>
+                    <p class="text-2xl text-blue-500" id="pontos">150</p>
+                    <p>Locais ativos no país.</p>
+                </div>
+            </div>
+            <button class="mt-4 bg-green-500 text-white px-6 py-2 rounded hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300" id="doarBtn">Doe Agora!</button>
+        </div>
+
+        <!-- Dados -->
+        <div id="data" class="tab-content">
+            <h2 class="text-xl font-semibold mb-4">Visualização de Dados</h2>
+            <canvas id="fomeChart" width="400" height="200" aria-label="Gráfico de insegurança alimentar"></canvas>
+        </div>
+
+        <!-- Engajamento -->
+        <div id="engage" class="tab-content">
+            <h2 class="text-xl font-semibold mb-4">Encontre Pontos de Doação</h2>
+            <div class="bg-white p-4 rounded shadow">
+                <p>Mapa Simulado: Clique em uma região para ver pontos.</p>
+                <div class="grid grid-cols-2 gap-2 mt-4">
+                    <button class="bg-blue-500 text-white p-2 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300" data-regiao="sp">São Paulo: 50 pontos</button>
+                    <button class="bg-blue-500 text-white p-2 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300" data-regiao="rj">Rio de Janeiro: 30 pontos</button>
+                </div>
+            </div>
+            <form class="mt-4" id="doacaoForm">
+                <label for="doacao" class="block font-semibold">Quantidade a Doar (kg):</label>
+                <input type="number" id="doacao" class="border p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-green-300" placeholder="Ex: 10" min="1" required>
+                <button type="submit" class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300">Confirmar Doação</button>
+            </form>
+        </div>
+
+        <!-- Educação -->
+        <div id="edu" class="tab-content">
+            <h2 class="text-xl font-semibold mb-4">Como Combater a Fome</h2>
+            <div class="bg-white p-4 rounded shadow animate-fade">
+                <p>Infográfico: Doe alimentos não perecíveis, participe de campanhas locais ou compartilhe conhecimento.</p>
+                <img src="https://via.placeholder.com/400x200?text=Infografico+Fome" alt="Infográfico sobre combate à fome com dicas de doação e participação em campanhas" class="w-full mt-4 rounded">
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center p-4 mt-6" role="contentinfo">
+        <p>&copy; 2023 Dashboard Cidadania. Feito com Front-end para impactar o mundo.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
